@@ -1,0 +1,62 @@
+{
+  "repo": "airbnb/lottie-android",
+  "pr_number": 2364,
+  "pr_title": "Fix Potential NPE In NetworkCache.clearCache",
+  "base_sha": "0014ef6c3002cbea3d1bb36f13d886e3d2e3a9da",
+  "head_sha": "b2e4d25d5a9a5c91b36bd79541b00e634926d0b1",
+  "base_ref": "master",
+  "head_ref": "network_cache_clear_npe_fix",
+  "clone_url": "https://github.com/airbnb/lottie-android.git",
+  "comment_commit_sha": "3d37005fbf61b513080785813cfdaa7b85c3f8b7",
+  "path": "lottie/src/main/java/com/airbnb/lottie/network/NetworkCache.java",
+  "previous_filename": null,
+  "status": "modified",
+  "additions": 2,
+  "deletions": 2,
+  "patch": "@@ -37,8 +37,8 @@ public void clear() {\n     File parentDir = parentDir();\n     if (parentDir.exists()) {\n       File[] files = parentDir.listFiles();\n-      if (files != null && files.length > 0) {\n-        for (File file : parentDir.listFiles()) {\n+      if (files != null) {\n+        for (File file : files) {\n           file.delete();\n         }\n       }",
+  "patch_truncated": false,
+  "target_comment": {
+    "comment_id": 1298731862,
+    "commit_id": "b2e4d25d5a9a5c91b36bd79541b00e634926d0b1",
+    "original_commit_id": "3d37005fbf61b513080785813cfdaa7b85c3f8b7",
+    "body": "The length check is a very minor optimization to not allocate an iterator when length as 0 so I'd recommend keeping it. other than that, lgtm",
+    "diff_hunk": "@@ -37,8 +37,8 @@ public void clear() {\n     File parentDir = parentDir();\n     if (parentDir.exists()) {\n       File[] files = parentDir.listFiles();\n-      if (files != null && files.length > 0) {\n-        for (File file : parentDir.listFiles()) {\n+      if (files != null) {",
+    "line": null,
+    "original_line": 40,
+    "start_line": null,
+    "side": "RIGHT",
+    "user": "gpeal",
+    "created_at": "2023-08-18T18:17:18Z",
+    "in_reply_to_id": null
+  },
+  "all_human_comments_on_file": [
+    {
+      "comment_id": 1298731862,
+      "commit_id": "b2e4d25d5a9a5c91b36bd79541b00e634926d0b1",
+      "original_commit_id": "3d37005fbf61b513080785813cfdaa7b85c3f8b7",
+      "body": "The length check is a very minor optimization to not allocate an iterator when length as 0 so I'd recommend keeping it. other than that, lgtm",
+      "diff_hunk": "@@ -37,8 +37,8 @@ public void clear() {\n     File parentDir = parentDir();\n     if (parentDir.exists()) {\n       File[] files = parentDir.listFiles();\n-      if (files != null && files.length > 0) {\n-        for (File file : parentDir.listFiles()) {\n+      if (files != null) {",
+      "line": null,
+      "original_line": 40,
+      "start_line": null,
+      "side": "RIGHT",
+      "user": "gpeal",
+      "created_at": "2023-08-18T18:17:18Z",
+      "in_reply_to_id": null
+    },
+    {
+      "comment_id": 1298749866,
+      "commit_id": "b2e4d25d5a9a5c91b36bd79541b00e634926d0b1",
+      "original_commit_id": "3d37005fbf61b513080785813cfdaa7b85c3f8b7",
+      "body": "Got it.",
+      "diff_hunk": "@@ -37,8 +37,8 @@ public void clear() {\n     File parentDir = parentDir();\n     if (parentDir.exists()) {\n       File[] files = parentDir.listFiles();\n-      if (files != null && files.length > 0) {\n-        for (File file : parentDir.listFiles()) {\n+      if (files != null) {",
+      "line": null,
+      "original_line": 40,
+      "start_line": null,
+      "side": "RIGHT",
+      "user": "undermark5",
+      "created_at": "2023-08-18T18:38:55Z",
+      "in_reply_to_id": 1298731862
+    }
+  ]
+}

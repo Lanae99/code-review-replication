@@ -1,0 +1,22 @@
+{
+    "issue_found": true,
+    "reviews": [
+        {
+            "review_title": "Review comment #1",
+            "snippets_reviewed": [
+                "@PostConstruct",
+                "public void runSqlScript() throws Exception {",
+                "if (Arrays.asList(env.getActiveProfiles()).contains(\"h2\")) {",
+                "Resource resource = new ClassPathResource(\"jpa/init.h2.sql\");",
+                "if (resource.exists()) {",
+                "DatabasePopulatorUtils.execute(new ResourceDatabasePopulator(resource), dataSource);",
+                "}",
+                "}",
+                "}"
+            ],
+            "comment": [
+                "Running the H2 initialization script unconditionally on every bean initialization is not idempotent. The portal script inserts fixed seed rows into tables like `ServerConfig`, `Users`, and `Authorities`, so re-creating the application context or restarting against a persisted H2 database can re-run the script and fail with duplicate-key/constraint violations. Please make the bootstrap idempotent (for example by using `CREATE TABLE IF NOT EXISTS` / `MERGE`/`INSERT ... WHERE NOT EXISTS`, or by guarding execution so it only runs once per database lifecycle)."
+            ]
+        }
+    ]
+}
