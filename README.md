@@ -2,8 +2,7 @@
 
 This repository contains the scripts, dataset, and example artifacts required to replicate our experiments comparing an **autonomous code review agent** (built on [`mini-swe-agent`](https://mini-swe-agent.com/latest/)) against a **zero-shot LLM baseline** on real-world GitHub Pull Request review comments.
 
-Paper extended: https://dl.acm.org/doi/10.1145/3794763.3794809 
-His replication package: https://github.com/crupig/human-vs-dl-CR_RP
+This work is the extension of [this paper](https://dl.acm.org/doi/10.1145/3794763.3794809). Further information about replication can be found [here](https://github.com/crupig/human-vs-dl-CR_RP).
 
 ---
 
